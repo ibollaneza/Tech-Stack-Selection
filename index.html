@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Stack Selection</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #1e1e1e;
+      color: #00ff00;
+      font-family: "Consolas", "Courier New", monospace;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #292929;
+      border-bottom: 2px solid #00ff00;
+    }
+    .main-container {
+      display: flex;
+      flex: 1;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 300px; /* Adjusted width to make the box smaller */
+      padding: 15px; /* Adjusted padding to make the box smaller */
+      background: #333;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
+      overflow-y: auto;
+      margin-right: 20px; /* Add space between sidebar and log */
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: #292929;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
+    }
+
+    h1, h2, h3 {
+      margin: 10px 0;
+      animation: flicker 2s infinite;
+      text-transform: uppercase;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+      70% { opacity: 0.6; }
+    }
+
+    .section-title {
+      margin-top: 15px;
+      margin-bottom: 10px;
+      color: #00ffff;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    button {
+      background-color: #00ff00;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: #00cc00;
+    }
+
+    select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      background: #444;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      border-radius: 4px;
+      font-family: "Consolas", "Courier New", monospace;
+    }
+
+    .log-container {
+      background: #111;
+      border: 1px solid #00ff00;
+      border-radius: 4px;
+      padding: 15px;
+      overflow-y: auto;
+      height: 100%; /* Adjust to fill the remaining height */
+      font-size: 0.9em;
+      white-space: pre-line;
+      font-family: "Consolas", "Courier New", monospace;
+    }
+    .log-entry {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #292929;
+      border-top: 2px solid #00ff00;
+      font-size: 0.8em;
+      font-family: "Consolas", "Courier New", monospace;
+    }
+
+    #connectWalletBtn {
+      background-color: #00ff00;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 4px;
+      transition: 0.2s;
+      margin: 20px auto;
+      display: block;
+    }
+    #connectWalletBtn:hover {
+      background-color: #00cc00;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1> Tech Stack Selection</h1>
+    <p style="margin:0;">Choose the Best Technologies for Your Web Project</p>
+  </header>
+
+  <div id="connectWalletContainer" style="text-align: center; margin-top: 20px;">
+    <button id="connectWalletBtn">Connect to Phantom Wallet</button>
+  </div>
+
+  <div class="main-container" style="display: none;" id="mainContent">
+    <!-- Sidebar (Stack Selection) -->
+    <div class="sidebar" id="stackSelection">
+      <h3>Frontend Stack</h3>
+      <div class="section-title">Framework</div>
+      <div>
+        <select id="frontendFramework">
+          <option value="react">React</option>
+          <option value="vue">Vue.js</option>
+          <option value="svelte">Svelte</option>
+        </select>
+      </div>
+
+      <div class="section-title">CSS Preprocessor</div>
+      <div>
+        <select id="cssPreprocessor">
+          <option value="sass">Sass</option>
+          <option value="postcss">PostCSS</option>
+        </select>
+      </div>
+
+      <div class="section-title">CSS-in-JS</div>
+      <div>
+        <select id="cssInJs">
+          <option value="styled-components">Styled Components</option>
+          <option value="emotion">Emotion</option>
+        </select>
+      </div>
+
+      <div class="section-title">Web Components</div>
+      <div>
+        <select id="webComponents">
+          <option value="shadow-dom">Shadow DOM</option>
+          <option value="lit">Lit</option>
+        </select>
+      </div>
+
+      <div class="section-title">Backend Stack</div>
+      <div class="section-title">Microservices</div>
+      <div>
+        <select id="microservices">
+          <option value="docker">Docker</option>
+          <option value="kubernetes">Kubernetes</option>
+        </select>
+      </div>
+
+      <div class="section-title">Framework</div>
+      <div>
+        <select id="backendFramework">
+          <option value="nestjs">NestJS</option>
+          <option value="nextjs">Next.js</option>
+        </select>
+      </div>
+
+      <div class="section-title">GraphQL</div>
+      <div>
+        <select id="graphql">
+          <option value="apollo">Apollo</option>
+          <option value="relay">Relay</option>
+        </select>
+      </div>
+
+      <div class="section-title">Serverless Functions</div>
+      <div>
+        <select id="serverless">
+          <option value="aws-lambda">AWS Lambda</option>
+          <option value="vercel">Vercel</option>
+          <option value="netlify">Netlify Functions</option>
+        </select>
+      </div>
+
+      <button id="saveStackBtn">Save Stack</button>
+    </div>
+
+    <!-- Content (Log) -->
+    <div class="content" id="selectionLog">
+      <h2>Selection Log</h2>
+      <div id="logContainer" class="log-container"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Tech Stack Selection. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // DOM Elements
+    const connectWalletBtn = document.getElementById("connectWalletBtn");
+    const connectWalletContainer = document.getElementById("connectWalletContainer");
+    const mainContent = document.getElementById("mainContent");
+    const saveStackBtn = document.getElementById("saveStackBtn");
+    const logContainer = document.getElementById("logContainer");
+
+    // Stack Selection
+    const frontendFramework = document.getElementById("frontendFramework");
+    const cssPreprocessor = document.getElementById("cssPreprocessor");
+    const cssInJs = document.getElementById("cssInJs");
+    const webComponents = document.getElementById("webComponents");
+    const microservices = document.getElementById("microservices");
+    const backendFramework = document.getElementById("backendFramework");
+    const graphql = document.getElementById("graphql");
+    const serverless = document.getElementById("serverless");
+
+    // Technical terms array
+    const technicalTerms = [
+      "Scalability",
+      "Latency",
+      "Throughput",
+      "Load Balancing",
+      "Containerization",
+      "Microservices",
+      "Serverless",
+      "GraphQL",
+      "REST API",
+      "WebAssembly",
+      "Edge Computing",
+      "CDN",
+      "CI/CD",
+      "DevOps",
+      "Observability",
+      "Telemetry",
+      "Cache Invalidation",
+      "Session Management",
+      "Data Sharding",
+      "Event Sourcing"
+    ];
+
+    // Event Listeners
+    saveStackBtn.addEventListener("click", () => {
+      const selectedFrontendFramework = frontendFramework.value;
+      const selectedCssPreprocessor = cssPreprocessor.value;
+      const selectedCssInJs = cssInJs.value;
+      const selectedWebComponents = webComponents.value;
+      const selectedMicroservices = microservices.value;
+      const selectedBackendFramework = backendFramework.value;
+      const selectedGraphql = graphql.value;
+      const selectedServerless = serverless.value;
+
+      const logEntry = `
+        Frontend Stack:
+        - Framework: ${selectedFrontendFramework}
+        - CSS Preprocessor: ${selectedCssPreprocessor}
+        - CSS-in-JS: ${selectedCssInJs}
+        - Web Components: ${selectedWebComponents}
+        
+        Backend Stack:
+        - Microservices: ${selectedMicroservices}
+        - Framework: ${selectedBackendFramework}
+        - GraphQL: ${selectedGraphql}
+        - Serverless Functions: ${selectedServerless}
+      `;
+
+      appendLog(logEntry);
+      appendTechnicalTerms();
+    });
+
+    function appendTechnicalTerms() {
+      const terms = generateTechnicalTerms();
+      const div = document.createElement("div");
+      div.className = "log-entry";
+      div.textContent = terms;
+      logContainer.appendChild(div);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    function generateTechnicalTerms() {
+      let terms = '';
+      for (let i = 0; i < 10; i++) {
+        const randomIndex = Math.floor(Math.random() * technicalTerms.length);
+        const randomValue = Math.floor(Math.random() * 100);
+        terms += `${technicalTerms[randomIndex]}: ${randomValue}\n`;
+      }
+      return terms;
+    }
+
+    function appendLog(text) {
+      const div = document.createElement("div");
+      div.className = "log-entry";
+      div.textContent = text;
+      logContainer.appendChild(div);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    // Phantom Wallet connection
+    async function connectWallet() {
+      try {
+        const resp = await window.solana.connect();
+        console.log("Connected to wallet " + resp.publicKey.toString());
+        connectWalletContainer.style.display = "none";
+        mainContent.style.display = "flex";
+      } catch (err) {
+        console.error("Wallet connection failed", err);
+      }
+    }
+
+    // Check for Phantom Wallet
+    window.addEventListener("load", () => {
+      if (window.solana && window.solana.isPhantom) {
+        connectWalletBtn.onclick = connectWallet;
+      } else {
+        console.error("Phantom Wallet not found");
+      }
+    });
+  </script>
+</body>
+</html>
